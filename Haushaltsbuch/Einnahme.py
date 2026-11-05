@@ -1,6 +1,6 @@
 from Buchung import Buchung
 
-class Einnahme : Buchung
+class Einnahme(Buchung):
 
-def __init__():
-    pass
+    def __init__(self):
+        pass

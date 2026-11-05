@@ -1,15 +1,16 @@
 from Kategorie import Kategorie
+from Buchung import Buchung
 from Ausgabe import Ausgabe
 from Einnahme import Einnahme
 from UIManager import UIManager
 
 class Haushaltsbuch:
     def __init__(self):
-        self.ausgaben: list = []
-        self.einnahmen: list = []
+        self.buchungen: list[Buchung] = []
+        self.kontostand: float = 0
 
-    def haushaltsbuch_starten():
-        UIManager.render_main_menu()
+    def haushaltsbuch_starten(self):
+        """Läd bei vorhandener JSON die Daten in den Speicher oder legt die JSON Speicherdatei initial an."""
 
 
     def ausgabe_buchen():

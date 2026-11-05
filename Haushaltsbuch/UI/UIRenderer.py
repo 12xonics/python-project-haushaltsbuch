@@ -1,4 +1,5 @@
 def render_main_menu():
+    """Rendert im Terminal das Hauptmenu."""
     print("-=-= Erfassung =-=-")
     print("1. Einnahme erfassen.")
     print("2. Ausgabe erfassen.")
@@ -11,4 +12,5 @@ def render_main_menu():
     print("")
     print("-=-= Kontostand =-=-")
     print("7. Kontostand berechnen.")
+
     
