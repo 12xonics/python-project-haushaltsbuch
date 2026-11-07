@@ -51,10 +51,13 @@ while running:
                     case 1:
                         demo_haushaltsbuch.kategorien_anzeigen()
                         eingabe: str = input("Gib die Kategorie deiner Einnahme an")
-                        demo_haushaltsbuch.kategorie_hinzufügen(eingabe)
-                        kategorie = Kategorie(eingabe.strip().upper())
+                        if eingabe.strip():
+                            demo_haushaltsbuch.kategorie_hinzufügen(eingabe)
+                            kategorie = Kategorie(eingabe.strip().upper())
 
-                        steps += 1
+                            steps += 1
+                        else:
+                            render_error_message("Es muss eine Kategorie angegeben werden")
 
                     case 2:
                         eingabe: str = input("Gib eine Beschreibung für deine Einnahme an (optional)")
@@ -63,6 +66,7 @@ while running:
                         steps += 1
 
                     case 3:
+                        clear_ui()
                         print(f"Betrag: {betrag}")
                         print(f"Kategorie: {kategorie.bezeichnung}")
                         print(f"Beschreibung: {beschreibung}")
