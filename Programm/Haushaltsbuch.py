@@ -12,11 +12,7 @@ class Haushaltsbuch:
     def haushaltsbuch_starten(self):
         """Läd bei vorhandener JSON die Daten in den Speicher oder legt die JSON Speicherdatei initial an."""
 
-
-    def ausgabe_buchen():
-        pass
-
-    def einnahme_buchen(self, einnahme: Einnahme):
+    def buchung_hinzufügen(self, einnahme: Einnahme):
         self.buchungen.append(einnahme)
 
     def berechne_kontostand():
@@ -33,7 +29,6 @@ class Haushaltsbuch:
         neue_kategorie: Kategorie = Kategorie(bezeichnung.strip().upper(), budget)
         self.kategorien.append(neue_kategorie)
         return True
-
 
     def kategorien_anzeigen(self):
         print("Verfügbare Kategorien:")
