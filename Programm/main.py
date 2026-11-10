@@ -75,7 +75,7 @@ while running:
                         if eingabe:
                             if eingabe == "J":
                                 neue_einnahme: Einnahme = Einnahme(betrag, kategorie, beschreibung)
-                                demo_haushaltsbuch.einnahme_buchen(neue_einnahme)
+                                demo_haushaltsbuch.buchung_hinzufügen(neue_einnahme)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Einnahme wurde erfolgreich gebucht")
