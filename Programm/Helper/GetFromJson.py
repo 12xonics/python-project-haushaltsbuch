@@ -1,3 +1,7 @@
+
+
+
+
 import json
 
 with open("haushaltsbuch.json", "r") as file:
