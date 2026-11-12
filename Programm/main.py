@@ -6,6 +6,7 @@ from Enums.MenuPointer import PointingAt
 from Einnahme import Einnahme
 from Kategorie import Kategorie
 from Haushaltsbuch import Haushaltsbuch
+from Helper.SaveToJson import speichern
 
 demo_haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
 
@@ -78,6 +79,7 @@ while running:
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Einnahme wurde erfolgreich gebucht")
+                                speichern(demo_haushaltsbuch)
 
                             else:
                                 done = True
@@ -86,4 +88,6 @@ while running:
 
                         else:
                             render_error_message("Ungültige Eingabe")
+
+
 
