@@ -5,15 +5,37 @@ from Einnahme import Einnahme
 
 class Haushaltsbuch:
     def __init__(self):
-        self.buchungen: list[Buchung] = []
+        self.einnahmen: list[Einnahme] = []
+        self.ausgaben: list[Ausgabe] = []
         self.kategorien: list[Kategorie] = []
-        self.kontostand: float = 0
 
     def haushaltsbuch_starten(self):
         """Läd bei vorhandener JSON die Daten in den Speicher oder legt die JSON Speicherdatei initial an."""
 
-    def buchung_hinzufügen(self, einnahme: Einnahme):
-        self.buchungen.append(einnahme)
+    def einnahme_hinzufügen(self, einnahme: Einnahme):
+        self.einnahmen.append(einnahme)
+
+    def ausgabe_hinzufügen(self, ausgabe: Ausgabe):
+        self.ausgaben.append(ausgabe)
+
+    def einnahme_entfernen(self, index: int):
+        del self.einnahmen[index]
+
+    def ausgabe_entfernen(self, index: int):
+        del self.ausgaben[index]
+
+    def kategorie_entfernen(self, index: int):
+        del self.kategorien[index]
+
+
+    def get_einnahmen(self) -> list:
+        return self.einnahmen
+
+    def get_ausgaben(self) -> list:
+        return self.ausgaben
+
+    def get_kategorien(self) -> list:
+        return self.kategorien
 
     def berechne_kontostand():
         pass

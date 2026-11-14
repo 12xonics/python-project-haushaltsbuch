@@ -75,7 +75,7 @@ while running:
                         if eingabe:
                             if eingabe == "J":
                                 neue_einnahme: Einnahme = Einnahme(betrag, kategorie, beschreibung)
-                                demo_haushaltsbuch.buchung_hinzufügen(neue_einnahme)
+                                demo_haushaltsbuch.einnahme_hinzufügen(neue_einnahme)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Einnahme wurde erfolgreich gebucht")
@@ -133,8 +133,8 @@ while running:
                         eingabe = input_yes_no("Diese Ausgabe buchen?")
                         if eingabe:
                             if eingabe == "J":
-                                neue_ausgabe: Ausgabe = Einnahme(betrag, kategorie, beschreibung)
-                                demo_haushaltsbuch.buchung_hinzufügen(neue_ausgabe)
+                                neue_ausgabe: Ausgabe = Ausgabe(betrag, kategorie, beschreibung)
+                                demo_haushaltsbuch.ausgabe_hinzufügen(neue_ausgabe)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Ausgabe wurde erfolgreich gebucht")
@@ -146,5 +146,100 @@ while running:
 
                         else:
                             render_error_message("Ungültige Eingabe")
-    
 
+
+        case PointingAt.EinnahmenAnzeigen.value:
+            clear_ui()
+            einnahmen: list = demo_haushaltsbuch.get_einnahmen()
+
+            if len(einnahmen) == 0:
+                print("\nKeine Einnahmen im System\n")
+            else:
+                print("ID / Datum / Betrag / Kategorie / Beschreibung")
+                for i in range(len(einnahmen)):
+                    print(f"[{i+1}] / {einnahmen[i].get_datum_formatted()} / {einnahmen[i].betrag} / {einnahmen[i].kategorie.bezeichnung} / {einnahmen[i].beschreibung}")
+
+            eingabe = input("\n\nGebe del <id> ein um einen Eintrag zu löschen. Enter zum zurückkehren in das Hauptmenu").strip()
+            if eingabe:
+                splitted_eingabe = eingabe.split()
+                try:
+                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen)):
+                            demo_haushaltsbuch.einnahme_entfernen(int(splitted_eingabe[1])-1)
+                            render_success_message("Einnahme erfolgreich gelöscht.")
+                    else:
+                        raise Exception
+                except:
+                    render_error_message("Ungültige Eingabe")
+
+            else:
+                pointer = PointingAt.MainMenu.value
+
+
+        case PointingAt.AusgabenAnzeigen.value:
+            clear_ui()
+            ausgaben: list = demo_haushaltsbuch.get_ausgaben()
+
+            if len(ausgaben) == 0:
+                print("\nKeine Ausgaben im System\n")
+            else:
+                print("ID / Datum / Betrag / Kategorie / Beschreibung")
+                for i in range(len(ausgaben)):
+                    print(f"[{i+1}] / {ausgaben[i].get_datum_formatted()} / {ausgaben[i].betrag} / {ausgaben[i].kategorie.bezeichnung} / {ausgaben[i].beschreibung}")
+
+            eingabe = input("\n\nGebe del <id> ein um einen Eintrag zu löschen. Enter zum zurückkehren in das Hauptmenu").strip()
+            if eingabe:
+                splitted_eingabe = eingabe.split()
+                try:
+                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen)):
+                            demo_haushaltsbuch.ausgabe_entfernen(int(splitted_eingabe[1])-1)
+                            render_success_message("Ausgabe erfolgreich gelöscht")
+                    else:
+                        raise Exception
+                except:
+                    render_error_message("Ungültige Eingabe")
+
+            else:
+                pointer = PointingAt.MainMenu.value
+
+
+        case PointingAt.KategorienAnzeigen.value:
+            clear_ui()
+            kategorien: list = demo_haushaltsbuch.get_kategorien()
+
+            if len(kategorien) == 0:
+                print("\nKeine Kategorien im System\n")
+            else:
+                print("ID / Bezeichnung / Budget")
+                for i in range(len(kategorien)):
+                    print(f"[{i+1}] / {kategorien[i].bezeichnung} {kategorien[i].budget}")
+
+            eingabe = input("\n\nGebe del <id> ein um eine Kategorie zu löschen " \
+            "\nGebe select <id> budget <budget> ein um ein Budget zu setzen " \
+            "\nGebe select <id> budget remove ein um ein Budget zu entfernen \nEnter zum zurückkehren in das Hauptmenu")
+
+            if eingabe:
+                splitted_eingabe = eingabe.split()
+                try:
+                    match splitted_eingabe[0].upper():
+
+                        case "DEL":
+                            demo_haushaltsbuch.kategorie_entfernen(int(splitted_eingabe[1])-1)
+                            render_success_message("Kategorie erfolgreich gelöscht")
+
+                        case "SELECT":
+                            if splitted_eingabe[2].upper() == "BUDGET":
+                                if splitted_eingabe[3].upper() == "REMOVE":
+                                    kategorien[int(splitted_eingabe[1])-1].set_budget(None)
+                                    render_success_message("Budget erfolgreich entfernt")
+                                else:
+                                    kategorien[int(splitted_eingabe[1])-1].set_budget(float(splitted_eingabe[3]))
+                                    render_success_message(f"Budget erfolgreich auf {splitted_eingabe[3]} gesetzt")
+
+                        case _:
+                            raise Exception
+
+                except:
+                    render_error_message("Ungültige Eingabe")
+
+            else:
+                pointer = PointingAt.MainMenu.value

@@ -4,6 +4,9 @@ class PointingAt(Enum):
     MainMenu = 0
     EinnahmenErfassen = 1
     AusgabenErfassen = 2
+    EinnahmenAnzeigen = 3
+    AusgabenAnzeigen = 4
+    KategorienAnzeigen = 5
 
     @classmethod
     def value_exists(cls, value: int) -> bool:
