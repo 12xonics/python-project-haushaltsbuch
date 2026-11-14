@@ -51,10 +51,10 @@ while running:
 
                     case 1:
                         demo_haushaltsbuch.kategorien_anzeigen()
-                        eingabe: str = input("Gib die Kategorie deiner Einnahme an")
+                        eingabe: str = input("Gib die Kategorie deiner Einnahme an oder erstelle sie")
                         if eingabe.strip():
                             demo_haushaltsbuch.kategorie_hinzufügen(eingabe)
-                            kategorie = Kategorie(eingabe.strip().upper())
+                            kategorie = Kategorie(eingabe.strip().capitalize())
 
                             steps += 1
                         else:
@@ -110,10 +110,10 @@ while running:
 
                     case 1:
                         demo_haushaltsbuch.kategorien_anzeigen()
-                        eingabe: str = input("Gib die Kategorie deiner Ausgabe an")
+                        eingabe: str = input("Gib die Kategorie deiner Ausgabe an oder erstelle sie")
                         if eingabe.strip():
                             demo_haushaltsbuch.kategorie_hinzufügen(eingabe)
-                            kategorie = Kategorie(eingabe.strip().upper())
+                            kategorie = Kategorie(eingabe.strip().capitalize())
 
                             steps += 1
                         else:
@@ -157,10 +157,10 @@ while running:
             else:
                 print("ID / Datum / Betrag / Kategorie / Beschreibung")
                 for i in range(len(einnahmen)):
-                    print(f"[{i+1}] / {einnahmen[i].get_datum_formatted()} / {einnahmen[i].betrag} / {einnahmen[i].kategorie.bezeichnung} / {einnahmen[i].beschreibung}")
+                    print(f"[{i+1}] / {einnahmen[i]}")
 
             eingabe = input("\n\nGebe del <id> ein um einen Eintrag zu löschen. Enter zum zurückkehren in das Hauptmenu").strip()
-            if eingabe:
+            if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
                     if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen)):
@@ -184,10 +184,10 @@ while running:
             else:
                 print("ID / Datum / Betrag / Kategorie / Beschreibung")
                 for i in range(len(ausgaben)):
-                    print(f"[{i+1}] / {ausgaben[i].get_datum_formatted()} / {ausgaben[i].betrag} / {ausgaben[i].kategorie.bezeichnung} / {ausgaben[i].beschreibung}")
+                    print(f"[{i+1}] / {ausgaben[i]}")
 
             eingabe = input("\n\nGebe del <id> ein um einen Eintrag zu löschen. Enter zum zurückkehren in das Hauptmenu").strip()
-            if eingabe:
+            if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
                     if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen)):
@@ -211,13 +211,13 @@ while running:
             else:
                 print("ID / Bezeichnung / Budget")
                 for i in range(len(kategorien)):
-                    print(f"[{i+1}] / {kategorien[i].bezeichnung} {kategorien[i].budget}")
+                    print(f"[{i+1}] / {kategorien[i]}")
 
             eingabe = input("\n\nGebe del <id> ein um eine Kategorie zu löschen " \
             "\nGebe select <id> budget <budget> ein um ein Budget zu setzen " \
             "\nGebe select <id> budget remove ein um ein Budget zu entfernen \nEnter zum zurückkehren in das Hauptmenu")
 
-            if eingabe:
+            if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
                     match splitted_eingabe[0].upper():

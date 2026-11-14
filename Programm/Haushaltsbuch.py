@@ -45,17 +45,17 @@ class Haushaltsbuch:
 
     def kategorie_hinzufügen(self, bezeichnung:str, budget: float = None) -> bool:
         for kategorie in self.kategorien:
-            if (kategorie.bezeichnung == bezeichnung.strip().upper()):
+            if (kategorie.bezeichnung == bezeichnung.strip().capitalize()):
                 return False
             
-        neue_kategorie: Kategorie = Kategorie(bezeichnung.strip().upper(), budget)
+        neue_kategorie: Kategorie = Kategorie(bezeichnung)
         self.kategorien.append(neue_kategorie)
         return True
 
     def kategorien_anzeigen(self):
         print("Verfügbare Kategorien:")
         for kategorie in self.kategorien:
-            print(f"- {kategorie.bezeichnung}")
+            print(f"* {kategorie}")
 
     def budget_setzen(kategorie: Kategorie):
         pass
