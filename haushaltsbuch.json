@@ -1,1 +1,8 @@
-[{"betrag": 10.0, "beschreibung": "", "kategorie": "SCHULE"}]
+[
+    {
+        "betrag": 22.0,
+        "beschreibung": "Dönerverkauf",
+        "kategorie": "DÖNER",
+        "typ": "Einnahme"
+    }
+]
