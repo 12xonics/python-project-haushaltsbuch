@@ -1,8 +1,14 @@
 [
     {
+        "betrag": 88.0,
+        "beschreibung": "Dürümverkauf",
+        "kategorie": "DÜRÜM",
+        "typ": "Einnahme"
+    },
+    {
         "betrag": 22.0,
-        "beschreibung": "Dönerverkauf",
-        "kategorie": "DÖNER",
+        "beschreibung": "Taschengeld erhalten",
+        "kategorie": "TASCHENGELD",
         "typ": "Einnahme"
     }
 ]

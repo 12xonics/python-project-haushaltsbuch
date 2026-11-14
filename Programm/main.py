@@ -7,8 +7,11 @@ from Einnahme import Einnahme
 from Kategorie import Kategorie
 from Haushaltsbuch import Haushaltsbuch
 from Helper.SaveToJson import speichern
+from Helper.GetFromJson import laden
 
 demo_haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
+
+laden(demo_haushaltsbuch) # load json
 
 demo_haushaltsbuch.kategorie_hinzufügen("Essen")
 demo_haushaltsbuch.kategorie_hinzufügen("Auto")
