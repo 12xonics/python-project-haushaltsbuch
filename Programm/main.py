@@ -31,6 +31,13 @@ while running:
             else:
                 render_error_message("Ungültige Eingabe")
 
+        case PointingAt.KontostandBerechnen.value:
+            clear_ui()
+            demo_haushaltsbuch.berechne_kontostand()
+            input("Drücke Enter, um zum Hauptmenü zurückzukehren...")
+            pointer = PointingAt.MainMenu.value
+
+
         case PointingAt.EinnahmenErfassen.value:
             clear_ui()
 

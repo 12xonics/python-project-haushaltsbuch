@@ -1,13 +1,13 @@
 [
     {
-        "betrag": 88.0,
-        "beschreibung": "Dürümverkauf",
-        "kategorie": "DÜRÜM",
+        "betrag": 22.0,
+        "beschreibung": "Taschengeld erhalten",
+        "kategorie": "TASCHENGELD",
         "typ": "Einnahme"
     },
     {
-        "betrag": 22.0,
-        "beschreibung": "Taschengeld erhalten",
+        "betrag": 666.0,
+        "beschreibung": "Hallo",
         "kategorie": "TASCHENGELD",
         "typ": "Einnahme"
     }

@@ -19,8 +19,16 @@ class Haushaltsbuch:
     def einnahme_buchen(self, einnahme: Einnahme):
         self.buchungen.append(einnahme)
 
-    def berechne_kontostand():
-        pass
+    def berechne_kontostand(self):
+        self.kontostand : float = 0.0
+
+        for buchung in self.buchungen:
+            if isinstance(buchung, Einnahme):
+                self.kontostand += buchung.betrag
+            else:
+                self.kontostand -= buchung.betrag
+        print(f"Der Kontostand beträgt {self.kontostand:.2f}€")
+
 
     def monatsbericht_ausgeben():
         pass
