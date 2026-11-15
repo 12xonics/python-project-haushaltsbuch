@@ -3,8 +3,8 @@ def input_betrag(message: str) -> float:
     eingabe = input(message)
     try:
         converted_eingabe = float(eingabe)
-        if converted_eingabe > 0:
+        if converted_eingabe >= 0.01:
             return converted_eingabe
-        raise Exception("Betrag kleiner oder gleich 0.")
+        raise Exception("Betrag kleiner als 1 Cent")
     except:
         return None

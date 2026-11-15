@@ -5,7 +5,7 @@ class Kategorie:
 
     def __str__(self):
         if self.budget:
-            return f"{self.bezeichnung} / {self.budget}€"
+            return f"{self.bezeichnung} / {self.budget:.2f}€"
         return f"{self.bezeichnung} / Kein Budget"
 
     def set_budget(self, budget: float):

@@ -163,7 +163,7 @@ while running:
             if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
-                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen)):
+                    if (splitted_eingabe[0].upper() == "DEL") and int(splitted_eingabe[1]) <= len(einnahmen) and int(splitted_eingabe[1]) > 0:
                             demo_haushaltsbuch.einnahme_entfernen(int(splitted_eingabe[1])-1)
                             render_success_message("Einnahme erfolgreich gelöscht.")
                     else:
@@ -190,7 +190,7 @@ while running:
             if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
-                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen)):
+                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen) and int(splitted_eingabe[1]) > 0):
                             demo_haushaltsbuch.ausgabe_entfernen(int(splitted_eingabe[1])-1)
                             render_success_message("Ausgabe erfolgreich gelöscht")
                     else:
@@ -220,23 +220,28 @@ while running:
             if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
-                    match splitted_eingabe[0].upper():
+                    if int(splitted_eingabe[1]) > 0: 
+                        match splitted_eingabe[0].upper():
 
-                        case "DEL":
-                            demo_haushaltsbuch.kategorie_entfernen(int(splitted_eingabe[1])-1)
-                            render_success_message("Kategorie erfolgreich gelöscht")
+                            case "DEL":
+                                demo_haushaltsbuch.kategorie_entfernen(int(splitted_eingabe[1])-1)
+                                render_success_message("Kategorie erfolgreich gelöscht")
 
-                        case "SELECT":
-                            if splitted_eingabe[2].upper() == "BUDGET":
-                                if splitted_eingabe[3].upper() == "REMOVE":
-                                    kategorien[int(splitted_eingabe[1])-1].set_budget(None)
-                                    render_success_message("Budget erfolgreich entfernt")
-                                else:
-                                    kategorien[int(splitted_eingabe[1])-1].set_budget(float(splitted_eingabe[3]))
-                                    render_success_message(f"Budget erfolgreich auf {splitted_eingabe[3]} gesetzt")
+                            case "SELECT":
+                                if splitted_eingabe[2].upper() == "BUDGET":
+                                    if splitted_eingabe[3].upper() == "REMOVE":
+                                        kategorien[int(splitted_eingabe[1])-1].set_budget(None)
+                                        render_success_message("Budget erfolgreich entfernt")
+                                    elif float(splitted_eingabe[3]) >= 0.01:
+                                        kategorien[int(splitted_eingabe[1])-1].set_budget(float(splitted_eingabe[3]))
+                                        render_success_message(f"Budget erfolgreich auf {splitted_eingabe[3]} gesetzt")
+                                    else:
+                                        raise Exception
 
-                        case _:
-                            raise Exception
+                            case _:
+                                raise Exception
+                    else:
+                        raise Exception
 
                 except:
                     render_error_message("Ungültige Eingabe")
