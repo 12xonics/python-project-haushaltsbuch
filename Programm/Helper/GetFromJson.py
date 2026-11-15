@@ -9,7 +9,7 @@ import json
 def laden(haushaltsbuch):
 
     with open("haushaltsbuch.json", "r") as file:
-        daten = json.load(file)
+        daten: list[dict] = json.load(file)
 
 
     for eintrag in daten:
@@ -18,7 +18,7 @@ def laden(haushaltsbuch):
         kategorie = eintrag ["kategorie"]
         typ = eintrag["typ"]
         kategorie_name = eintrag["kategorie"]
-        
+
         kategorie = None
 
     for vorhandene_kategorie in haushaltsbuch.kategorien:

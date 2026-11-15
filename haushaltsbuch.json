@@ -1,14 +1,14 @@
 [
     {
-        "betrag": 22.0,
-        "beschreibung": "Taschengeld erhalten",
-        "kategorie": "TASCHENGELD",
+        "betrag": 40.0,
+        "beschreibung": "Gehalt bekommen",
+        "kategorie": "GEHALT",
         "typ": "Einnahme"
     },
     {
-        "betrag": 666.0,
-        "beschreibung": "Hallo",
-        "kategorie": "TASCHENGELD",
+        "betrag": 50.0,
+        "beschreibung": "Gehalt bekommen",
+        "kategorie": "GEHALT",
         "typ": "Einnahme"
     }
 ]
