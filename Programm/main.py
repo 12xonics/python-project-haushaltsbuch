@@ -8,11 +8,9 @@ from Ausgabe import Ausgabe
 from Kategorie import Kategorie
 from Haushaltsbuch import Haushaltsbuch
 
-demo_haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
+haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
 
-demo_haushaltsbuch.kategorie_hinzufügen("Essen")
-demo_haushaltsbuch.kategorie_hinzufügen("Auto")
-demo_haushaltsbuch.kategorie_hinzufügen("Schule")
+
 
 running: bool = True
 pointer: int = PointingAt.MainMenu.value
@@ -21,6 +19,8 @@ while running:
     match pointer:
         case PointingAt.MainMenu.value:
             clear_ui()
+            haushaltsbuch.berechne_kontostand()
+            print("")
             render_main_menu()
             auswahl = input_int("Wähle mit einer Zahleneingabe das nächste Menu aus.")
             if auswahl and PointingAt.value_exists(auswahl):
@@ -50,10 +50,10 @@ while running:
                             render_error_message("Eingegebener Betrag ungültig")
 
                     case 1:
-                        demo_haushaltsbuch.kategorien_anzeigen()
+                        haushaltsbuch.kategorien_anzeigen()
                         eingabe: str = input("Gib die Kategorie deiner Einnahme an oder erstelle sie")
                         if eingabe.strip():
-                            demo_haushaltsbuch.kategorie_hinzufügen(eingabe)
+                            haushaltsbuch.kategorie_hinzufügen(eingabe)
                             kategorie = Kategorie(eingabe.strip().capitalize())
 
                             steps += 1
@@ -75,7 +75,7 @@ while running:
                         if eingabe:
                             if eingabe == "J":
                                 neue_einnahme: Einnahme = Einnahme(betrag, kategorie, beschreibung)
-                                demo_haushaltsbuch.einnahme_hinzufügen(neue_einnahme)
+                                haushaltsbuch.einnahme_hinzufügen(neue_einnahme)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Einnahme wurde erfolgreich gebucht")
@@ -109,10 +109,10 @@ while running:
                             render_error_message("Eingegebener Betrag ungültig")
 
                     case 1:
-                        demo_haushaltsbuch.kategorien_anzeigen()
+                        haushaltsbuch.kategorien_anzeigen()
                         eingabe: str = input("Gib die Kategorie deiner Ausgabe an oder erstelle sie")
                         if eingabe.strip():
-                            demo_haushaltsbuch.kategorie_hinzufügen(eingabe)
+                            haushaltsbuch.kategorie_hinzufügen(eingabe)
                             kategorie = Kategorie(eingabe.strip().capitalize())
 
                             steps += 1
@@ -134,7 +134,7 @@ while running:
                         if eingabe:
                             if eingabe == "J":
                                 neue_ausgabe: Ausgabe = Ausgabe(betrag, kategorie, beschreibung)
-                                demo_haushaltsbuch.ausgabe_hinzufügen(neue_ausgabe)
+                                haushaltsbuch.ausgabe_hinzufügen(neue_ausgabe)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Ausgabe wurde erfolgreich gebucht")
@@ -150,7 +150,7 @@ while running:
 
         case PointingAt.EinnahmenAnzeigen.value:
             clear_ui()
-            einnahmen: list = demo_haushaltsbuch.get_einnahmen()
+            einnahmen: list = haushaltsbuch.get_einnahmen()
 
             if len(einnahmen) == 0:
                 print("\nKeine Einnahmen im System\n")
@@ -164,7 +164,7 @@ while running:
                 splitted_eingabe = eingabe.split()
                 try:
                     if (splitted_eingabe[0].upper() == "DEL") and int(splitted_eingabe[1]) <= len(einnahmen) and int(splitted_eingabe[1]) > 0:
-                            demo_haushaltsbuch.einnahme_entfernen(int(splitted_eingabe[1])-1)
+                            haushaltsbuch.einnahme_entfernen(int(splitted_eingabe[1])-1)
                             render_success_message("Einnahme erfolgreich gelöscht.")
                     else:
                         raise Exception
@@ -177,7 +177,7 @@ while running:
 
         case PointingAt.AusgabenAnzeigen.value:
             clear_ui()
-            ausgaben: list = demo_haushaltsbuch.get_ausgaben()
+            ausgaben: list = haushaltsbuch.get_ausgaben()
 
             if len(ausgaben) == 0:
                 print("\nKeine Ausgaben im System\n")
@@ -191,7 +191,7 @@ while running:
                 splitted_eingabe = eingabe.split()
                 try:
                     if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen) and int(splitted_eingabe[1]) > 0):
-                            demo_haushaltsbuch.ausgabe_entfernen(int(splitted_eingabe[1])-1)
+                            haushaltsbuch.ausgabe_entfernen(int(splitted_eingabe[1])-1)
                             render_success_message("Ausgabe erfolgreich gelöscht")
                     else:
                         raise Exception
@@ -204,7 +204,7 @@ while running:
 
         case PointingAt.KategorienAnzeigen.value:
             clear_ui()
-            kategorien: list = demo_haushaltsbuch.get_kategorien()
+            kategorien: list = haushaltsbuch.get_kategorien()
 
             if len(kategorien) == 0:
                 print("\nKeine Kategorien im System\n")
@@ -224,7 +224,7 @@ while running:
                         match splitted_eingabe[0].upper():
 
                             case "DEL":
-                                demo_haushaltsbuch.kategorie_entfernen(int(splitted_eingabe[1])-1)
+                                haushaltsbuch.kategorie_entfernen(int(splitted_eingabe[1])-1)
                                 render_success_message("Kategorie erfolgreich gelöscht")
 
                             case "SELECT":

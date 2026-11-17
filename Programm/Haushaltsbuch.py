@@ -37,8 +37,15 @@ class Haushaltsbuch:
     def get_kategorien(self) -> list:
         return self.kategorien
 
-    def berechne_kontostand():
-        pass
+    def berechne_kontostand(self):
+        self.kontostand : float = 0.0
+        
+        for einnahme in self.einnahmen:
+            self.kontostand += einnahme.betrag
+
+        for ausgabe in self.ausgaben:
+            self.kontostand -= ausgabe.betrag
+        print(f"Willkommen! Der Kontostand beträgt {self.kontostand:.2f}€")
 
     def monatsbericht_ausgeben():
         pass

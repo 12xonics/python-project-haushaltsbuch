@@ -10,8 +10,6 @@ def render_main_menu():
     print("[5] Kategorien anzeigen.")
     print("[6] Monatsbericht.")
     print("")
-    print("-=-=-= Kontostand =-=-=-")
-    print("[7] Kontostand berechnen.")
 
 def render_error_message(message: str):
     """Rendert im Terminal eine Fehlermeldung. Meldung kann über die Stringübergabe bestimmt werden."""
