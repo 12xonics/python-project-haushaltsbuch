@@ -8,10 +8,11 @@ from Ausgabe import Ausgabe
 from Kategorie import Kategorie
 from Haushaltsbuch import Haushaltsbuch
 from Helper.SaveToJson import speichern
+from Helper.GetFromJson import laden
 
 haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
 
-
+laden(haushaltsbuch)
 
 running: bool = True
 pointer: int = PointingAt.MainMenu.value
@@ -88,7 +89,6 @@ while running:
 
                         else:
                             render_error_message("Ungültige Eingabe")
-                speichern(haushaltsbuch)
         
         case PointingAt.AusgabenErfassen.value:
             clear_ui()
@@ -247,6 +247,9 @@ while running:
 
                 except:
                     render_error_message("Ungültige Eingabe")
+    
 
             else:
                 pointer = PointingAt.MainMenu.value
+
+    speichern(haushaltsbuch)
