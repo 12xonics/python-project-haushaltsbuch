@@ -7,6 +7,7 @@ from Einnahme import Einnahme
 from Ausgabe import Ausgabe
 from Kategorie import Kategorie
 from Haushaltsbuch import Haushaltsbuch
+from Helper.SaveToJson import speichern
 
 haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
 
@@ -87,6 +88,7 @@ while running:
 
                         else:
                             render_error_message("Ungültige Eingabe")
+                speichern(haushaltsbuch)
         
         case PointingAt.AusgabenErfassen.value:
             clear_ui()

@@ -1,0 +1,16 @@
+{
+    "einnahmen": [
+        {
+            "betrag": 22.0,
+            "beschreibung": "hallo",
+            "kategorie": "Hallo"
+        }
+    ],
+    "ausgaben": [],
+    "kategorien": [
+        {
+            "bezeichnung": "Hallo",
+            "budget": null
+        }
+    ]
+}

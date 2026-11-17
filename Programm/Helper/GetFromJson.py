@@ -9,7 +9,7 @@ import json
 def laden(haushaltsbuch):
 
     with open("haushaltsbuch.json", "r") as file:
-        daten: list[dict] = json.load(file)
+        daten: dict = json.load(file)
 
 
     for eintrag in daten:
