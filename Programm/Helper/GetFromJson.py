@@ -34,7 +34,7 @@ def laden(haushaltsbuch):
 
         
         kategorie.set_budget(budget)
-
+    print("NACH KATEGORIEN:", [k.bezeichnung for k in haushaltsbuch.kategorien])
 
    # Einnahmen laden     
 
@@ -46,7 +46,7 @@ def laden(haushaltsbuch):
         kategorie = None
 
         for vorhandene_kategorie in haushaltsbuch.kategorien:
-            if vorhandene_kategorie.bezeichnung == kategorie_name:
+            if vorhandene_kategorie.bezeichnung == kategorie_name.strip().capitalize():
                 kategorie = vorhandene_kategorie
                 break
 
@@ -56,6 +56,9 @@ def laden(haushaltsbuch):
 
         einnahme = Einnahme(betrag, kategorie, beschreibung)
         haushaltsbuch.einnahmen.append(einnahme)
+
+    print("NACH EINNAHMEN:", [k.bezeichnung for k in haushaltsbuch.kategorien])
+    
 
 # Ausgaben laden
 
@@ -67,7 +70,7 @@ def laden(haushaltsbuch):
         kategorie = None
 
         for vorhandene_kategorie in haushaltsbuch.kategorien:
-            if vorhandene_kategorie.bezeichnung == kategorie_name:
+            if vorhandene_kategorie.bezeichnung == kategorie_name.strip().capitalize():
                 kategorie = vorhandene_kategorie
                 break
     
@@ -77,6 +80,8 @@ def laden(haushaltsbuch):
 
         ausgabe = Ausgabe(betrag, kategorie, beschreibung) 
         haushaltsbuch.ausgaben.append(ausgabe)
+
+    print("NACH AUSGABEN:", [k.bezeichnung for k in haushaltsbuch.kategorien])
     
 
         

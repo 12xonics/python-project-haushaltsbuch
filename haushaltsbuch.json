@@ -1,5 +1,44 @@
 {
-    "einnahmen": [],
-    "ausgaben": [],
-    "kategorien": []
+    "einnahmen": [
+        {
+            "betrag": 70.0,
+            "beschreibung": "Aktienverkau",
+            "kategorie": "Aktien"
+        }
+    ],
+    "ausgaben": [
+        {
+            "betrag": 80.0,
+            "beschreibung": "GTA 6",
+            "kategorie": "Videospiele"
+        },
+        {
+            "betrag": 50.0,
+            "beschreibung": "Pizza",
+            "kategorie": "Essen"
+        },
+        {
+            "betrag": 40.0,
+            "beschreibung": "Aktienkauf",
+            "kategorie": "Aktien"
+        }
+    ],
+    "kategorien": [
+        {
+            "bezeichnung": "Taschengeld",
+            "budget": null
+        },
+        {
+            "bezeichnung": "Videospiele",
+            "budget": 100.0
+        },
+        {
+            "bezeichnung": "Essen",
+            "budget": null
+        },
+        {
+            "bezeichnung": "Aktien",
+            "budget": null
+        }
+    ]
 }
