@@ -78,6 +78,7 @@ while running:
                             if eingabe == "J":
                                 neue_einnahme: Einnahme = Einnahme(betrag, kategorie, beschreibung)
                                 haushaltsbuch.einnahme_hinzufügen(neue_einnahme)
+                                speichern(haushaltsbuch)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Einnahme wurde erfolgreich gebucht")
@@ -137,6 +138,7 @@ while running:
                             if eingabe == "J":
                                 neue_ausgabe: Ausgabe = Ausgabe(betrag, kategorie, beschreibung)
                                 haushaltsbuch.ausgabe_hinzufügen(neue_ausgabe)
+                                speichern(haushaltsbuch)
                                 done = True
                                 pointer = PointingAt.MainMenu.value
                                 render_success_message("Ausgabe wurde erfolgreich gebucht")
@@ -167,6 +169,7 @@ while running:
                 try:
                     if (splitted_eingabe[0].upper() == "DEL") and int(splitted_eingabe[1]) <= len(einnahmen) and int(splitted_eingabe[1]) > 0:
                             haushaltsbuch.einnahme_entfernen(int(splitted_eingabe[1])-1)
+                            speichern(haushaltsbuch)
                             render_success_message("Einnahme erfolgreich gelöscht.")
                     else:
                         raise Exception
@@ -192,8 +195,9 @@ while running:
             if eingabe.strip():
                 splitted_eingabe = eingabe.split()
                 try:
-                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(einnahmen) and int(splitted_eingabe[1]) > 0):
+                    if (splitted_eingabe[0].upper() == "DEL") and (int(splitted_eingabe[1]) <= len(ausgaben) and int(splitted_eingabe[1]) > 0):
                             haushaltsbuch.ausgabe_entfernen(int(splitted_eingabe[1])-1)
+                            speichern(haushaltsbuch)
                             render_success_message("Ausgabe erfolgreich gelöscht")
                     else:
                         raise Exception
@@ -227,15 +231,18 @@ while running:
 
                             case "DEL":
                                 haushaltsbuch.kategorie_entfernen(int(splitted_eingabe[1])-1)
+                                speichern(haushaltsbuch)
                                 render_success_message("Kategorie erfolgreich gelöscht")
 
                             case "SELECT":
                                 if splitted_eingabe[2].upper() == "BUDGET":
                                     if splitted_eingabe[3].upper() == "REMOVE":
                                         kategorien[int(splitted_eingabe[1])-1].set_budget(None)
+                                        speichern(haushaltsbuch)
                                         render_success_message("Budget erfolgreich entfernt")
                                     elif float(splitted_eingabe[3]) >= 0.01:
                                         kategorien[int(splitted_eingabe[1])-1].set_budget(float(splitted_eingabe[3]))
+                                        speichern(haushaltsbuch)
                                         render_success_message(f"Budget erfolgreich auf {splitted_eingabe[3]} gesetzt")
                                     else:
                                         raise Exception
@@ -252,4 +259,3 @@ while running:
             else:
                 pointer = PointingAt.MainMenu.value
 
-    speichern(haushaltsbuch)

@@ -1,53 +1,36 @@
 {
     "einnahmen": [
         {
-            "betrag": 70.0,
-            "beschreibung": "Aktienverkau",
-            "kategorie": "Aktien"
-        },
-        {
-            "betrag": 400.0,
-            "beschreibung": "Kredit",
-            "kategorie": "Darlehen"
+            "betrag": 100.0,
+            "beschreibung": "",
+            "kategorie": {
+                "bezeichnung": "Raubüberfall",
+                "budget": null
+            }
         }
     ],
     "ausgaben": [
         {
-            "betrag": 80.0,
-            "beschreibung": "GTA 6",
-            "kategorie": "Videospiele"
+            "betrag": 100.0,
+            "beschreibung": "rutschen",
+            "kategorie": {
+                "bezeichnung": "Freizeit",
+                "budget": null
+            }
         },
         {
-            "betrag": 50.0,
-            "beschreibung": "Pizza",
-            "kategorie": "Essen"
-        },
-        {
-            "betrag": 40.0,
-            "beschreibung": "Aktienkauf",
-            "kategorie": "Aktien"
+            "betrag": 6000.0,
+            "beschreibung": "Volleyball",
+            "kategorie": {
+                "bezeichnung": "Freizeit",
+                "budget": null
+            }
         }
     ],
     "kategorien": [
         {
-            "bezeichnung": "Taschengeld",
-            "budget": null
-        },
-        {
-            "bezeichnung": "Videospiele",
-            "budget": null
-        },
-        {
-            "bezeichnung": "Essen",
-            "budget": 200.0
-        },
-        {
-            "bezeichnung": "Aktien",
-            "budget": null
-        },
-        {
-            "bezeichnung": "Darlehen",
-            "budget": null
+            "bezeichnung": "Freizeit",
+            "budget": 5000.0
         }
     ]
 }

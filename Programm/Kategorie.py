@@ -1,7 +1,7 @@
 class Kategorie:
-    def __init__(self, bezeichnung: str):
+    def __init__(self, bezeichnung: str, budget: float = None):
         self.bezeichnung = bezeichnung.strip().capitalize()
-        self.budget = None
+        self.budget = budget
 
     def __str__(self):
         if self.budget:

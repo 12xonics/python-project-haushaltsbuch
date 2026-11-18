@@ -2,8 +2,8 @@ from datetime import datetime
 from Kategorie import Kategorie
 
 class Buchung:
-    def __init__(self, betrag: float, kategorie: Kategorie, beschreibung: str = "Keine Beschreibung"):
-        self.timestamp: datetime = datetime.now()
+    def __init__(self, betrag: float, kategorie: Kategorie, beschreibung: str = "Keine Beschreibung", timestamp: datetime = datetime.now()):
+        self.timestamp: datetime = timestamp
         self.betrag: float = betrag
         self.kategorie: Kategorie = kategorie
         self.beschreibung: str = beschreibung

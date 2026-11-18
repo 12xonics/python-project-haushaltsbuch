@@ -2,7 +2,6 @@ import json
 from Einnahme import Einnahme
 
 def speichern(haushaltsbuch):
-    print("DEBUG:SPREICHERN AUFGERUFEN")
     daten : dict = {
           "einnahmen": [],
           "ausgaben": [],
@@ -15,7 +14,9 @@ def speichern(haushaltsbuch):
         eintrag : dict = {
             "betrag": einnahme.betrag,
             "beschreibung": einnahme.beschreibung,
-            "kategorie": einnahme.kategorie.bezeichnung
+            "kategorie": {"bezeichnung" : einnahme.kategorie.bezeichnung,
+                              "budget" : einnahme.kategorie.budget}
+            #"timestamp": einnahme.timestamp
         }
         daten["einnahmen"].append(eintrag)
 
@@ -25,7 +26,9 @@ def speichern(haushaltsbuch):
             eintrag : dict = {
                 "betrag": ausgabe.betrag,
                 "beschreibung": ausgabe.beschreibung,
-                "kategorie": ausgabe.kategorie.bezeichnung
+                "kategorie": {"bezeichnung" : ausgabe.kategorie.bezeichnung,
+                              "budget" : ausgabe.kategorie.budget}
+                #"timestamp": ausgabe.timestamp
             }
             daten["ausgaben"].append(eintrag)
 
