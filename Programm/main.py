@@ -13,10 +13,6 @@ from Helper.GetFromJson import laden
 haushaltsbuch: Haushaltsbuch = Haushaltsbuch()
 
 laden(haushaltsbuch)
-print("DEBUG NACH DEM LADEN:")
-for kategorie in haushaltsbuch.kategorien:
-    print(repr(kategorie.bezeichnung))
-input("DEBUG: Enter zum Forfahren..")
 
 running: bool = True
 pointer: int = PointingAt.MainMenu.value

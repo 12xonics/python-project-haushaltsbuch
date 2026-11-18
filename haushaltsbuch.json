@@ -4,6 +4,11 @@
             "betrag": 70.0,
             "beschreibung": "Aktienverkau",
             "kategorie": "Aktien"
+        },
+        {
+            "betrag": 400.0,
+            "beschreibung": "Kredit",
+            "kategorie": "Darlehen"
         }
     ],
     "ausgaben": [
@@ -30,14 +35,18 @@
         },
         {
             "bezeichnung": "Videospiele",
-            "budget": 100.0
-        },
-        {
-            "bezeichnung": "Essen",
             "budget": null
         },
         {
+            "bezeichnung": "Essen",
+            "budget": 200.0
+        },
+        {
             "bezeichnung": "Aktien",
+            "budget": null
+        },
+        {
+            "bezeichnung": "Darlehen",
             "budget": null
         }
     ]
