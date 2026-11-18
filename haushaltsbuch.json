@@ -1,24 +1,5 @@
 {
     "einnahmen": [],
-    "ausgaben": [
-        {
-            "betrag": 60.0,
-            "beschreibung": "GTA 6",
-            "kategorie": "Videospieke"
-        }
-    ],
-    "kategorien": [
-        {
-            "bezeichnung": "Arbeit",
-            "budget": null
-        },
-        {
-            "bezeichnung": "Videospieke",
-            "budget": null
-        },
-        {
-            "bezeichnung": "Videospieke",
-            "budget": null
-        }
-    ]
+    "ausgaben": [],
+    "kategorien": []
 }
